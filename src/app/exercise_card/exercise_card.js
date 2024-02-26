@@ -7,8 +7,7 @@ export default function ExerciseCard(props) {
   const [selectedFormat, setSelectedFormat] = useState('');
   const [options, setOptions] = useState([]);
   const [exerciseName,setExerciseName]= useState('');
-
-
+  const { data, onExerciseSave } = props;
 
   const handleFormatChange = (selectedValue) => {
     setSelectedFormat(selectedValue);
@@ -22,9 +21,7 @@ export default function ExerciseCard(props) {
       setOptions([]);
     }
   };
-
-  const { data, onExerciseSave } = props;
-  console.log(props)
+  
   const handleSaveExercise = (e)=>{
     let exerciseDeets = {'exercise_name':exerciseName,'exercise_format':selectedFormat,'exercise_duration': e} 
     onExerciseSave(exerciseDeets)

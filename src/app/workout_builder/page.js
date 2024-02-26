@@ -1,14 +1,16 @@
 'use client'
 
-import "./workout_builder.css";
+import { useRouter } from 'next/navigation';
 import ExerciseCard from "../exercise_card/exercise_card";
-import { Container, Button, Flex } from "@radix-ui/themes";
+import { Container, Button, Flex, } from "@radix-ui/themes";
 import { BookmarkFilledIcon, PlusIcon } from '@radix-ui/react-icons'
 import React, { useState } from 'react';
 
 
-
 export default function WorkoutBuilder(props) {
+
+  const router = useRouter(); // Initialize the router
+
   const [workout,setWorkOut]= useState([])
   
   const upDateWorkOut = (exercise) => {
@@ -47,24 +49,24 @@ export default function WorkoutBuilder(props) {
           setComponentInstances([
           <ExerciseCard key={new Date().getTime()} data={props.data} onExerciseSave={upDateWorkOut} />,
         ]);
-        // console.log("***bing bing**",componentInstances)
   }
-  
+
   return (
+    
     <main>
-      <Container size="3">
+      <Container size="4">
         <Flex direction="column" gap="3">
-          {/* <ExerciseCard key={regenerateKey} data={props.data}/> */}
       {componentInstances}
          <Button onClick={addComponent}> 
           <PlusIcon/>Add Exercise
           </Button>
           <Button onClick={getresponse}>
-            <BookmarkFilledIcon/>Save Workout
+            <BookmarkFilledIcon/>Save Workouts
           </Button>
+          <Button color="red" onClick={() => router.push('/workout_archives')}>View All Workouts</Button>
         </Flex>
+        
       </Container>
-      
     </main>
   );
 }
