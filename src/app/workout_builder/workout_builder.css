@@ -1,0 +1,22 @@
+.background {
+    display: flex;
+    flex-direction: row;
+    background-color: pink;
+    padding: 0% 10%;
+    min-height: 100vh;
+}
+
+.workout,
+.exercises {
+    flex: 1; /* This will make them share the available space equally */
+    display: flex;
+    flex-direction: column;
+}
+
+.workout {
+    background-color: blue;
+}
+
+.exercises {   
+    background-color: purple;
+}
